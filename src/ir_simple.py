@@ -9,13 +9,13 @@ FREQ = 1 / 38000
 GPIO.setup(IR_PIN, GPIO.IN)
 
 def ir_sniffer():
-    with open("ir_signals2.txt","a") as file:
-        file.write("timestanp\n")
+    with open("ir_signals2.csv","a") as file:
+        file.write("timestamp\n")
 
         while True:
             state = GPIO.input(IR_PIN)
             read = '1' if state else '0'
-            file.write(read + ",\n")
+            file.write(read + "\n")
             time.sleep(FREQ)
 
 if __name__ == "__main__":
