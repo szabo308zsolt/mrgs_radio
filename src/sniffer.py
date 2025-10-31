@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Sniffer using pyrf24-style API.
 Scans channels 0..125 and prints any packets it receives (hex).
@@ -8,7 +7,7 @@ import time
 import sys
 
 # Typical import — many pyrf24 packages expose an RF24-like class.
-from pyrf24 import RF24
+from pyrf24 import RF24, RF24_1MBPS, RF24_PA_LOW
 
 CE_PIN = 22   # GPIO pin number connected to CE
 CSN_BUS = 0   # SPI bus/CS (often 0 for SPI0 CE0)
@@ -21,8 +20,8 @@ def main():
 
     # Basic radio settings
     radio.setAutoAck(False)
-    radio.setDataRate(RF24.RATE_1MBPS)
-    radio.setPALevel(RF24.PA_LOW)
+    radio.setDataRate(RF24_1MBPS)
+    radio.setPALevel(RF24_PA_LOW)
     radio.setRetries(0, 0)  # disable automatic retransmit
     radio.startListening()
 
